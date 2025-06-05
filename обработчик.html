@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CandyShop</title>
+    <link rel="stylesheet" href="style.css">
+      <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <h1> Как добавить обработчик</h1>
+        <p>У нас есть кнопка, клик по которой должен вызвать появление попапа. План такой: нам нужно поймать тот момент, когда пользователь кликнет по кнопке. Когда это произойдёт, мы добавим попапу класс modal--show, чтобы окно появилось на странице.
+
+Действие «поймать тот момент, когда пользователь кликнет по кнопке» можно назвать по-другому: добавить обработчик события клика по кнопке. Далее, для простоты, опустим слово «событие» и будем говорить так: добавить обработчик клика по кнопке.
+
+Что значит добавить обработчик? Чтобы определить момент, когда происходит какое-то событие на странице, в нашем случае клик по кнопке, мы добавляем кнопке обработчик, который сработает, когда произойдёт клик.
+
+</p>
+<p>Посмотрим на синтаксис добавления обработчика.</p>
+<pre>
+    <code>var button = document.querySelector('.button');
+
+button.addEventListener('click', function () {
+  // Инструкции
+});</code>
+</pre>
+       
+
+
+<p>Функция addEventListener() говорит о том, что мы добавляем обработчик события на элемент. Дословно «добавляем слушатель события». Обработчик «слышит» всё, что происходит на странице и обязательно услышит, когда произойдёт то событие, которое нужно нам. Если мы правильно его настроим.
+
+Дальше мы подробно разберём синтаксис обработчиков событий и их настройку, а пока найдём кнопку, клик по которой должен вызвать открытие попапа. Это кнопка с классом button-open. Добавим этой кнопке обработчик по аналогии с примером выше.
+    </p>
+</div>
+<div class="zad">
+     <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+<div class="task">
+    <ol>
+        <li>После переменной popup создайте переменную openPopupButton и запишите в неё кнопку с классом button-open
+</li>
+        <li>После объявления переменных, добавьте обработчик на кнопку: openPopupButton.addEventListener('click', function () { });</li>
+       
+    </ol>
+    <h1>РЕШЕНИЕ</h1>
+    <ol><li>var popup = document.querySelector('.modal');
+
+</li>
+<li>
+    var openPopupButton = document.querySelector('.button-open');
+</li>
+        <li>
+           openPopupButton.addEventListener('click', function () {
+  
+}); 
+        </li>
+    </ol> 
+</div>
+    <script src="script2.js"></script>
+</div>
+</body>
+</html>
