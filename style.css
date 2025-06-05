@@ -4,5 +4,5 @@ h1{margin: 0px auto;text-align: center;}
 li{margin: 15px;background: rgb(252, 252, 204);padding: 10px;}
 p,pre,h1{background: lightgoldenrodyellow;padding: 10px;}
 span{background: honeydew;border: 1px solid lavender;
-
 }
+.yellow{background: yellow;border: 1px solid red;}
