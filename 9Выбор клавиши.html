@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Жми на клавишу</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal modal--show">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+    <h1>
+Выбор клавиши</h1>
+<p>Событие мы назвали, оно срабатывает при нажатии на любую клавишу. 
+    Но нам любая не подходит, нам нужен <span>ESC</span>. Как выполнять код по нажатию только на одну конкретную клавишу? 
+    Обратимся к уже знакомому объекту <span>event</span>.</p>
+<p>Мы говорили раньше, что у объекта события есть много полезных свойств. 
+    Например, тип события, введённый символ, координаты курсора в момент наступления события и многое другое.
+     В том числе и код клавиши, которую нажал пользователь. Это свойство называется <span>keyCode</span><span></span> .</p>
+<p>С помощью этого свойства каждую клавишу можно определить по коду. Например, у <span>Enter</span> код 13,
+     а у <span>ESC</span> — код 27. Эти номера универсальны и одинаковы в любой раскладке. Найти код любой клавиши можно 
+     <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode">здесь</a>.</p>
+<p>Теперь мы знаем, что есть объект <span>event</span>, который содержит номер нажатой клавиши в свойстве <span>keyCode</span>, 
+    и знаем код необходимой клавиши. Осталось всё это собрать в одном обработчике.</p>
+<pre><code>
+  document.addEventListener('keydown', function<span class="yellow">(evt)</span> {
+  // Проверяем, что код клавиши равен 27
+  if (<span class="yellow">evt.keyCode === 27)</span> {
+    // Код отсюда выполнится только при нажатии <span>ESC</span>
+  }
+});</code></pre>
+<p>Настроим наш обработчик, чтобы инструкции выполнялись только при нажатии <span>ESC</span>.</p>
+<p class="rules">кроме <span>keyCode</span> есть и другие свойства для определения нажатой клавиши. Например, <span>key</span>. Его отличие в том, что он возвращает 
+    не код клавиши, а её название в виде строки: <span>«Enter»</span>, <span>«Alt»</span>, <span>«Escape»</span>. Ещё есть свойство <span>code.</span> 
+    Оно тоже возвращает название клавиши, при этом на значение не влияет выбранный язык клавиатуры. 
+    Эти свойства пока поддерживаются не во всех браузерах, 
+    но когда поддержка станет лучше, стоит начать использовать их вместо <span>keyCode</span> в соответствии с современным стандартом JavaScript.</p>
+<ol>
+    <li>В функцию-обработчик клавиатурного события добавьте параметр evt
+</li>
+    <li>Внутри обработчика проверяйте, что код нажатой клавиши evt.keyCode равен 27</li>
+    <li>Удалите вывод в консоль из обработчика и добавьте в тело условия вывод в консоль строки 'Я нажал ESC'</li>
+    <li>Поставьте фокус в мини-браузер, нажмите ESC на клавиатуре и проверьте сообщение в консоли.</li>
+</ol>
+<pre><code>
+var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    console.log('Я нажал ESC');
+  }
+});
+</code></pre>
+<script>var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    console.log('Я нажал ESC');
+  }
+});</script>
+</body>
+</html>

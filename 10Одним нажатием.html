@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Одним нажатием</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal modal--show">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+    <h1>
+Одним нажатием</h1>
+<p>Мы настроили обработчик, теперь инструкции выполняются только при нажатии клавиши <span>ESC</span>.</p>
+<p>Нам осталось удалить класс <span>modal--show</span> у попапа, чтобы он действительно закрывался каждый раз при нажатии <span>ESC</span>.</p>
+<p>Для этого будем использовать уже знакомый нам метод remove объекта <span>classList</span>.</p>
+
+    <ol>
+        <li>В обработчике клавиатурного события, внутри условия, удалите вывод в консоль и добавьте удаление класса modal--show у попапа.
+</li>
+        
+        <li>Закройте попап, нажав клавишу ESC. Не забудьте поставить фокус в мини-браузер.</li>
+    </ol>
+    <pre><code>
+var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    popup.classList.remove('modal--show');
+  }
+});
+    </code></pre>
+    <script>var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    popup.classList.remove('modal--show');
+  }
+});</script>
+</body>
+</html>

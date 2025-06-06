@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="style.css">
+    <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal modal--show">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+    <h1>Прячем всплывающее окно</h1>
+    <p>Мы добавили обработчик и теперь попап открывается, если нажать на кнопку <span>«Показать контакты»</span>. 
+        Сделаем так, чтобы попап закрывался по клику на крестик (кнопка с классом <span>button-close</span>).</p>
+    <p>Для этого сделаем уже знакомые нам действия: найдём кнопку, запишем в переменную, добавим ей обработчик клика.
+         По клику будем удалять класс <span>modal--show</span>  у попапа, чтобы он закрылся.</p>
+    <p>Как добавлять классы элементам мы знаем, а как их удалять?</p>
+    <p>Нужно использовать уже знакомый объект <span>classList</span>. Если для добавления класса мы используем метод<span>add()</span> ,
+         то для удаления надо обратиться к методу<span>remove()</span> , передав строку с классом, который нужно удалить. 
+         Выглядит это так:</p>
+    <pre><code>
+var popup = document.querySelector('.popup');
+// Перед названием селектора ставим точку
+
+<span class="yellow">popup.classList.remove('popup--open');</span>
+// Перед названием класса точка не ставится
+    </code></pre>
+    <p>Результат в разметке такой же, как при удалении класса вручную.</p>
+    <pre><code>
+&lt; !-- Исходное состояние разметки --&gt;
+&lt;section class="popup popup--open"&gt;
+  …
+&lt;/section&gt;
+
+&lt;!-- Состояние после вызова classList.remove --&gt;
+&lt;section class="popup"&gt;
+  …
+&lt;/section&gt;
+    </code></pre>
+    <p>Найдём кнопку с помощью <span>querySelector</span>. Только искать будем не по всему документу, а внутри элемента <span>popup</span>. 
+        Мы точно знаем, что кнопка находится там,
+         поэтому избыточно запускать поиск по всему документу. Это ресурсоёмкая операция, потому что документ может быть очень большим.</p>
+    <p>Добавим обработчик клика по кнопке с классом<span>button-close</span> , проверим, что всё настроено правильно и попап действительно закрывается. В этом 
+        обработчике мы не будем указывать параметр <span>evt</span>, так как мы не собираемся использовать <span>объект события</span> внутри <span>функции-обработчика</span>. 
+        Элемент <span>button-close — кнопка</span>.
+         У неё нет действий по умолчанию, которые надо отменять.</p>
+<p class="rules">
+обратите внимание, мы ставим точку, когда ищем элемент по селектору, но не ставим её при удалении или добавлении класса. 
+Это правило важно запомнить. 
+Чтобы было легче, можно помнить о том, что названия classList.remove и classList.add говорят сами за себя. 
+Мы что-то делаем с классом элемента, поэтому нам надо передать только строку с названием класса. А искать элемент через <span>querySelector</span> 
+можно разными способами. Мы говорили об этом раньше. Поэтому мы ставим точку перед названием класса, чтобы явно указать, что мы ищем
+ именно по классу, а не тегу или как-то иначе.
+</p>
+<ol>
+    <li>После переменной <span>openPopupButton</span> создайте переменную <span>closePopupButton</span>,
+         которая будет содержать элемент с классом <span>button-close</span>. 
+        Ищите элемент внутри<span>popup</span> .
+
+
+</li>
+    <li>Ниже, после обработчика <span>openPopupButton</span>, 
+        добавьте обработчик клика на <span>closePopupButton</span>.</li>
+    <li>Внутри обработчика удаляйте класс<span>modal--show</span> 
+         у попапа с помощью <span>classList.remove()</span>.</li>
+    <li>Закройте попап кликом по кнопке <span>closePopupButton</span></li>
+</ol>
+<pre><code>
+var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+</code></pre>
+<script>var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+</script>
+    </body>
+</html>

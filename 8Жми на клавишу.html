@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Жми на клавишу</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="style1.css" rel="stylesheet">
+</head>
+<body>
+    <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal modal--show">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+    <h1>Жми на клавишу</h1>
+    <p>Попап уже открывается и закрывается по кликам, осталось дописать код так, чтобы попап закрывался по нажатию на клавишу <span>ESC</span>.</p>
+    <p>С кликом по кнопке мы вроде разобрались, а как повесить обработчик на нажатие клавиши?</p>
+    <p>
+
+У события «нажатие на клавишу» есть специальное название — <span>keydown</span>. 
+Такое событие срабатывает при нажатии на любую клавишу. Обратите внимание, слушать это событие можно только на элементах, 
+которые имеют состояние фокуса: поля ввода, кнопки, элементы с атрибутом<span>tabindex</span> , документ. 
+При нажатии фокус должен находиться на соответствующем элементе.</p>
+    <pre><code>
+  document.addEventListener(<span class="yellow">'keydown'</span>, function() {
+  // Код отсюда выполнится при каждом нажатии любой клавиши
+  });</code></pre>
+    <p>Добавим обработчик нажатия клавиши на документ и проверим, как он работает.</p>
+    <p class="rules"><b>Важно!</b> Чтобы обработчик среагировал на нажатия клавиш, нужно поставить фокус в наш мини-браузер. 
+        Кликните внутри мини-браузера, чтобы активировать окно. В обычной жизни так делать не надо, 
+        но в нашем интерфейсе мини-браузер встроен в обычный браузер, поэтому надо дать понять JavaScript, где вы сейчас находитесь.</p>
+    <ol>
+        <li>После всех обработчиков, добавьте обработчик нажатия клавиши <span>'keydown'</span> на документ.
+
+</li>
+       
+        <li>Внутри обработчика добавьте вывод в консоль строки 'Я нажал какую-то клавишу'</li>
+        <li>Поставьте фокус в мини-браузер, по очереди нажмите любые три клавиши и загляните в консоль.</li>
+    </ol>
+    <pre><code>
+var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function () {
+  console.log('Я нажал какую-то клавишу');
+});
+
+    </code></pre>
+    <script>var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+var closePopupButton = popup.querySelector('.button-close');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('modal--show');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('modal--show');
+});
+
+document.addEventListener('keydown', function () {
+  console.log('Я нажал какую-то клавишу');
+});
+</script>
+</body>
+</html>
