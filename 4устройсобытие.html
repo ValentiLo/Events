@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CandyShop</title>
+    <link rel="stylesheet" href="style.css">
+      <link href="style1.css" rel="stylesheet">
+</head>
+<body><div>
+    <h1>Как устроены события</h1>
+    <p>Теперь подробно разберём, что означает подобная запись:</p>
+    <pre>
+        <code>
+button.addEventListener('click', function () {
+  // Инструкции
+});</code>
+    </pre>
+    <ol>
+        <li>Элемент</li>
+        <p>В примере выше button — кнопка, на которой мы будем ждать пользовательское событие (клик, нажатие, ввод). Этот элемент указывается в самом начале.
+
+Далее, через точку, мы добавляем addEventListener. То есть указываем, что хотим добавить «слушатель события».
+
+</p>
+        <li>Название события</li>
+        <p>Первый параметр функции addEventListener - название события, которое мы хотим поймать. Название записывается строкой, поэтому обязательно указывается в кавычках. Для всех событий есть специальные зафиксированные названия, поэтому мы не можем ловить событие клика, передав любую строку, которая придёт в голову, например, 'push'. Список названий событий можно посмотреть здесь.
+
+</p>
+        <li>Обработчик</li>
+        <p>Второй параметр addEventListener — функция. Это и есть обработчик события. Внутри этой функции мы указываем, что нужно сделать, когда произойдёт событие, как его нужно обработать. Инструкции внутри этой функции могут быть любыми: можно выводить сообщения в консоль (это может пригодиться при отладке кода), менять классы или содержимое элементов, вызывать другие функции. Внутри это такая же функция, как и любая другая, только с некоторыми особенностями, о которых мы поговорим позже.
+
+Главное, на что нужно обратить внимание — функция, переданная в обработчик, не выполняется сразу. Действия из тела этой функции выполнятся только когда произойдёт установленное событие.
+
+В итоге всю запись из примера можно прочитать так: добавим обработчик клика на кнопку button. При клике по кнопке должны выполниться какие-то инструкции.
+
+Нужную кнопку мы уже нашли и записали в переменную openPopupButton, обработчик клика тоже добавили. Теперь запишем инструкции в обработчик. При клике будем выводить сообщение в консоль, чтобы убедиться, что событие действительно срабатывает.
+</p>
+    </ol>
+
+</div>
+<div>
+    <h1>code</h1>
+    <pre>
+        <code>
+            var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+
+openPopupButton.addEventListener('click', function () {
+
+});
+        </code>
+    </pre>
+    <ol>
+        <li>Внутри обработчика добавьте вывод в консоль строки 'Клик по кнопке'
+</li>
+        <li>Кликните по кнопке «Показать контакты» и проверьте сообщение в консоли.</li>
+    </ol>
+    <pre>
+        <code>
+            var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+
+openPopupButton.addEventListener('click', function () {
+  console.log('Клик по кнопке');
+});
+
+        </code>
+    </pre>
+</div>
+     <section class="card">
+      <div class="card__content">
+        <h1 class="visually-hidden">Магазин мороженого CandyShop</h1>
+        <img class="card__logo" src="candy-shop/candyshop.svg" width="205" height="63" alt="CandyShop">
+        <p class="card__text">Готовим мороженое из самых свежих сливок!</p>
+        <img class="card__img" src="candy-shop/icecream.png" width="196" height="240" alt="Мороженое">
+      </div>
+      <div class="card__controls">
+        <a href="contacts.html" class="card__button button-open">Показать контакты</a>
+      </div>
+    </section>
+
+    <section class="modal">
+      <div class="modal__content">
+        <h2 class="visually-hidden">Контакты</h2>
+        <h3>Адрес:</h3>
+        <p>191186, Санкт-Петербург, ул. Большая Конюшенная, д. 19/8</p>
+        <h3>Телефон:</h3>
+        <p>+7 (812) 275-75-75</p>
+        <h3>Почта:</h3>
+        <p>mail@htmlacademy.ru</p>
+        <button class="modal__button button-close" type="button">Закрыть</button>
+      </div>
+    </section>
+
+    <script>
+        var popup = document.querySelector('.modal');
+var openPopupButton = document.querySelector('.button-open');
+
+openPopupButton.addEventListener('click', function () {
+  console.log('Клик по кнопке');
+});
+    </script>
+    
+</body>
+</html>
