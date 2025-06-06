@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Конспект 1</title>
     <link rel="stylesheet" href="style.css">
     <link href="style1.css" rel="stylesheet">
 </head>
@@ -12,9 +12,9 @@
     <p><b>События</b> — <i>действия пользователя на странице (клик по кнопке, нажатие клавиши)</i>.</p>
     <p>Добавление обработчиков событий</p>
     <pre><code>
-    button.addEventListener('click', function () {
+    button.<span class="yellow">addEventListener('click', function () {
     // Инструкции
-    });
+    });</span>
     </code></pre>
     <p>В примере:</p>
     <ul>
@@ -62,9 +62,9 @@ button.addEventListener('click', function () {
          <p>Объект event содержит метод, который 
             отменяет действие элемента по умолчанию: <span>preventDefault()</span>.</p>
          <pre><code>
-link.addEventListener('click', function(evt) {
+link.addEventListener('click', function(<span class="yellow">evt</span>) {
   // Отменяем действие по умолчанию
-  evt.preventDefault();
+  <span class="yellow">evt.preventDefault();</span>
 
   // Добавляем инструкции для события клика
   console.log('Произошёл клик');
@@ -78,9 +78,9 @@ link.addEventListener('click', function(evt) {
             Например, у <span>Enter</span> код 13, а у <span>ESC</span> — 27. Эти номера универсальны и одинаковы в любой раскладке. Найти код любой клавиши можно 
              <a href="https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/keyCode">здесь</a>.</p>
         <pre><code>
-document.addEventListener('keydown', function(evt) {
+document.addEventListener('keydown', function(<span class="yellow">evt</span>) {
   // Проверяем, что код клавиши равен 27
-  if (evt.keyCode === 27) {
+  if (<span class="yellow">evt.keyCode === 27</span>) {
     // Код отсюда выполнится только при нажатии ESC
   }
 });    
@@ -88,5 +88,6 @@ document.addEventListener('keydown', function(evt) {
         <p>Кроме <span>keyCode</span> есть и другие свойства для определения нажатой клавиши. Например, <span>key</span> и <span>code</span>. Они возвращают названия клавиш,
              а не их номера. Эти свойства пока поддерживаются не во всех браузерах, но когда поддержка станет лучше, стоит начать использовать их вместо 
              <span>keyCode</span> в соответствии с современным стандартом JavaScript.</p>
+             <p><a href="index.html">На главную</a></p>   
         </body>
 </html>

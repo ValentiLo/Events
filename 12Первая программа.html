@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style12.css">
+    <style>
+    p{background: white;}
+        </style>
+</head>
+<body>
+    <h1 class="visually-hidden">Каталог товаров</h1>
+
+    <section class="card">
+      <h2 class="card__title">Зайчик-попрыгайчик</h2>
+      <img class="card__img" src="mishka/rabbit.jpg" width="" height="" alt="Зайчик-попрыгайчик">
+      <p class="card__text">Рост 30 см, вес 200 г</p>
+      <p><a class="card__button button-show" href="popup.html">Показать подробности</a></p>
+    </section>
+
+    <section class="popup">
+      <div class="popup__content">
+        <h2 class="visually-hidden">Подробности о товаре</h2>
+        <ul class="features">
+          <li class="feature feature--eco">
+            <p>Экологически чистые материалы</p>
+          </li>
+          <li class="feature feature--handmade">
+            <p>Связано вручную с любовью и умилением</p>
+          </li>
+          <li class="feature feature--gift">
+            <p>Поставляется в подарочной упаковке</p>
+          </li>
+          <li class="feature feature--like">
+            <p>Увеличивает лайки на фотографиях</p>
+          </li>
+        </ul>
+        <button class="popup__button button-hide" type="button">Закрыть</button>
+      </div>
+    </section>
+    <h1>Первая программа: «Не надо стесняться»</h1>
+    <p>Нужно запрограммировать взаимодействие с пользователем.
+
+В разметке есть попап (класс popup).
+
+</p>
+<ol>
+    <li>Клик по кнопке «Показать подробности» (класс button-show) должен вызвать показ окна на странице. У попапа должен появиться класс popup--open.
+
+</li>
+    <li>Клик по крестику в теле попапа (класс button-hide) должен спрятать окно со страницы. Для этого нужно удалить класс popup--open у попапа.
+
+</li>
+    <li>Кроме этого, если окно на странице, а пользователь нажал клавишу ESC, попап тоже должен исчезнуть. Закрытие должно срабатывать только по этой клавише, нажатие на другие клавиши не должны влиять на положение всплывающего окна.
+</li>
+    <li>И не забывай, что кнопка «Показать подробности» свёрстана ссылкой. Не забудь отменить переход по этой ссылке.</li>
+   
+</ol>
+<script>
+    var popup = document.querySelector('.popup');
+var openPopupButton = document.querySelector('.button-show');
+var closePopupButton = popup.querySelector('.button-hide');
+
+openPopupButton.addEventListener('click', function (evt) {
+  evt.preventDefault();
+  popup.classList.add('popup--open');
+});
+
+closePopupButton.addEventListener('click', function () {
+  popup.classList.remove('popup--open');
+});
+document.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === 27) {
+    popup.classList.remove('popup--open');
+  }
+});
+/* Техническое задание
+
+Нужно запрограммировать взаимодействие с пользователем.
+
+В разметке есть попап (класс 'popup').
+
+Клик по кнопке «Показать подробности» (класс 'button-show') должен вызвать показ окна на странице. У попапа должен появиться класс 'popup--open'.
+
+Клик крестику в теле попапа (класс 'button-hide') должен спрятать окно со страницы. Для этого нужно удалить класс 'popup--open' у окна.
+
+Кроме этого, если окно на странице, а пользователь нажал клавишу ESC, попап тоже должен исчезнуть. Закрытие попапа должно срабатывать только по этой клавише, нажатие на другие клавиши не должны влиять на положение всплывающего окна.
+
+И не забывай, что кнопка «Показать подробности» свёрстана ссылкой. Не забудь отменить переход по этой ссылке.
+
+*/
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

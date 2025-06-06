@@ -3,6 +3,8 @@ h1,div{background: rgb(183, 237, 237);padding: 10px;margin: 5px;margin: auto;}
 h1{margin: 0px auto;text-align: center;}
 li{margin: 15px;background: rgb(252, 252, 204);padding: 10px;}
 p,pre,h1{background: lightgoldenrodyellow;padding: 10px;}
-span{background: honeydew;border: 1px solid lavender;
+span{background: honeydew;border: 1px solid lavender;color: blue;padding: 1px;
 }
-.yellow{background: yellow;border: 1px solid red;}
+.yellow{background: yellow;border: 1px solid red;padding: 3px;}
+.rules{background: powderblue;color: blue;border: 2px solid red;}
+code{line-height: 2em;}
