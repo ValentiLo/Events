@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style12.css">
+    
+</head>
+<body>
+    <h1>Добро пожаловать в нашу галерею</h1>
+    <p>Галерея состоит из нескольких миниатюр (элементы с классом gallery__photo-preview) и большой фотографии (класс full-photo). По клику 
+        на миниатюру должно меняться большое изображение. Большая картинка должна соответствовать превью, по которой кликнул пользователь.</p>
+    <p>Данные для изображений собраны в массив photos. Каждый элемент массива — путь до полноразмерной фотографии. 
+        Порядок элементов в этом массиве такой же, как и порядок миниатюр в разметке.</p>
+    <p>Верстальщик уже всё подготовил: изображения превью лежат внутри кнопок с классом gallery__photo-preview, клики именно по этим кнопкам 
+        будут менять содержимое большого изображения (класс full-photo). От нас, как обычно, требуется запрограммировать взаимодействие 
+        интерфейса с пользователем.</p>
+    <p>Сначала мы найдём все миниатюры с помощью querySelectorAll и большое изображение через querySelector, 
+        запишем найденные элементы в переменные.</p>
+    <p>Мы знакомились с querySelectorAll в этом и этом заданиях части «Знакомство с JavaScript в браузере».
+         Загляните туда, если вы забыли, как работает этот метод.</p>
+    <section class="gallery">
+      <h1>Кексогалерея</h1>
+      <p class="gallery__photo-full">
+        <img class="full-photo" src="gallery/laptop-large.jpg" width="550" height="367" alt="Фото большое">
+      </p>
+      <p class="gallery__photo-previews">
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/laptop.jpg" alt="Превью с ноутбуком">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/microphone.jpg" alt="Превью с микрофоном">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/keyboard.jpg" alt="Превью с клавиатурой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/signboard.jpg" alt="Превью с табличкой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/tree.jpg" alt="Превью с деревом">
+        </button>
+      </p>
+    </section>
+<script>
+  
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>
