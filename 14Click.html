@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body>
+    <h1>Click ’Em All!</h1>
+   <p>Мы нашли все изображения на странице, теперь можно программировать логику. 
+    Взаимодействие должно быть таким: пользователь кликает по превью → меняется большая картинка.</p>
+   <p>Первым делом нужно добавить обработчики клика на каждую миниатюру. Все миниатюры хранятся в коллекции thumbnails. Мы можем 
+    перебрать эту коллекцию в цикле, добавляя обработчик клика на текущий элемент коллекции. Так мы добавим обработчик на каждую миниатюру.</p>
+   <p>Внутри обработчика выведем строку в консоль, а затем попробуем кликнуть по миниатюрам. Так мы убедимся, что обработчики срабатывают.</p>
+
+    <section class="gallery">
+      <h1>Кексогалерея</h1>
+      <p class="gallery__photo-full">
+        <img class="full-photo" src="gallery/laptop-large.jpg" width="550" height="367" alt="Фото большое">
+      </p>
+      <p class="gallery__photo-previews">
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/laptop.jpg" alt="Превью с ноутбуком">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/microphone.jpg" alt="Превью с микрофоном">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/keyboard.jpg" alt="Превью с клавиатурой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/signboard.jpg" alt="Превью с табличкой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/tree.jpg" alt="Превью с деревом">
+        </button>
+      </p>
+    </section>
+    <div>
+        <ol>
+            <li>После переменных напишите цикл for, который увеличивает счётчик i на единицу от 0 до длины коллекции thumbnails 
+                (не включая последнее значение).
+
+</li>
+           <li>Внутри цикла добавьте обработчик клика на текущий элемент массива thumbnails[i].</li>
+           <li>Внутри обработчика добавьте вывод в консоль строки 'Клик по картинке'.</li>
+           <li>Кликните по одной из миниатюр и загляните в консоль.</li>     
+        </ol>
+        <pre><code>
+var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    console.log('Клик по картинке');
+  });
+}
+
+        </code></pre>
+    </div>
+<script>
+  var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    console.log('Клик по картинке');
+  });
+}
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

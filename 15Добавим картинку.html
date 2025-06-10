@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body>
+    <h1>Добавим картинку</h1>
+   <p>У изображений есть атрибут src, которым можно управлять из JavaScript.
+Чтобы изображение элемента с классом full-photo (переменная fullPhoto) менялось, должно измениться значение src этого элемента.</p>
+   <p>У нас есть массив с данными photos. Когда Кекс давал нам задание, он отметил, что «порядок элементов в этом массиве такой же, 
+    как и порядок миниатюр в разметке». Все превью находятся в коллекции thumbnails. Получается, элементы массива photos подходят
+     элементам из коллекции thumbnails с тем же индексом.</p>
+   <p>Например, пользователь кликнул по самой первой миниатюре в разметке. Она же thumbnails[0] в коллекции. Тогда в большой 
+    картинке должно появиться изображение с адресом photos[0]. Получается такой код:</p>
+   <pre><code>
+thumbnails[0].addEventListener('click', function () {
+  fullPhoto.src = photos[0];
+});
+   </code></pre>
+   <p>Добавим код внутрь обработчика. Будем подставлять в атрибут src значение элемента из массива photos. Индексы миниатюры и элемента 
+    с адресом картинки будут совпадать.</p>
+   
+    <section class="gallery">
+      <h1>Кексогалерея</h1>
+      <p class="gallery__photo-full">
+        <img class="full-photo" src="gallery/laptop-large.jpg" width="550" height="367" alt="Фото большое">
+      </p>
+      <p class="gallery__photo-previews">
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/laptop.jpg" alt="Превью с ноутбуком">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/microphone.jpg" alt="Превью с микрофоном">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/keyboard.jpg" alt="Превью с клавиатурой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/signboard.jpg" alt="Превью с табличкой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/tree.jpg" alt="Превью с деревом">
+        </button>
+      </p>
+    </section>
+    <div>
+        <ol>
+            <li>В обработчике замените вывод строки в консоль на запись пути картинки в атрибут src: fullPhoto.src = photos[i]
+
+</li>
+           
+           <li>Кликните по одной из миниатюр.</li>  
+  
+        </ol>
+        <p class="rules">Обратите внимание, что программа работает с ошибкой. Дальше мы разберёмся, почему так произошло. </p>
+        <pre><code>
+var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    fullPhoto.src = photos[i];
+  });
+}
+
+        </code></pre>
+    </div>
+<script>
+  var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    fullPhoto.src = photos[i];
+  });
+}
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

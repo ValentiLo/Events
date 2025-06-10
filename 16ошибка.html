@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body>
+    <h1>В систему закралась ошибка</h1>
+   <p>Кажется, в нашей программе что-то пошло не так. Кликаем по превью, 
+    а большая картинка не появляется. Мы проверили работу программы в предыдущем задании — сообщения в консоль выводились.</p>
+   <p>Что делают разработчики в такой ситуации? Отлаживают код.</p>
+   <p>Программа перестала работать, когда мы добавили эту запись:</p>
+   <pre><code>fullPhoto.src = photos[i];</code></pre>
+   <p>Что с ней может быть не так? Часть fullPhoto.src не вызывает подозрений — мы нашли изображение по классу, сохранили в переменную, 
+    а теперь хотим что-то записать в атрибут src. А вот photos[i] может быть причиной сбоя.</p>
+   <p>Дело не в названии массива photos, его мы написали правильно. Остаётся индекс и текущий элемент массива. Возможно,
+     с ними что-то не то.</p>
+   <p>Мы выведем их в консоль и проверим. Кажется, проблема именно там.</p>
+   
+    <section class="gallery">
+      <h1>Кексогалерея</h1>
+      <p class="gallery__photo-full">
+        <img class="full-photo" src="gallery/laptop-large.jpg" width="550" height="367" alt="Фото большое">
+      </p>
+      <p class="gallery__photo-previews">
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/laptop.jpg" alt="Превью с ноутбуком">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/microphone.jpg" alt="Превью с микрофоном">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/keyboard.jpg" alt="Превью с клавиатурой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/signboard.jpg" alt="Превью с табличкой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/tree.jpg" alt="Превью с деревом">
+        </button>
+      </p>
+    </section>
+    <div>
+        <ol>
+            <li>Внутри обработчика, в самом начале, выведите в консоль счётчик i
+
+</li>
+           <li>На следующей строке выведите в консоль photos[i]</li>
+           <li>Кликните по двум любым миниатюрам и загляните в консоль</li>  
+  
+        </ol>
+       <pre><code>
+var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    console.log(i);
+    console.log(photos[i]);
+    fullPhoto.src = photos[i];
+  });
+}
+        </code></pre>
+    </div>
+<script>
+  var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+for (var i = 0; i < thumbnails.length; i++) {
+  thumbnails[i].addEventListener('click', function () {
+    console.log(i);
+    console.log(photos[i]);
+    fullPhoto.src = photos[i];
+  });
+}
+
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>
