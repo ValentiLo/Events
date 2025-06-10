@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body class="pattern">
+    <h1>Стань независимым</h1>
+<p>Мы выяснили, что переопределение глобальных переменных влияет на результат работы функции, которая эти переменные использует. 
+    Но, вообще-то, так делать не стоит — это не лучшая практика. Переопределение переменных, которые использует функция, может 
+    приводить к неожиданным последствиям и ошибкам в коде.
+     Поэтому и существуют параметры, чтобы переиспользовать функции, явно передавая необходимые значения.</p>
+<p>С параметрами всё легко и понятно, если мы хотим сразу вызвать функцию и получить результат её работы.</p>
+<pre><code>
+var eatDinner = function (food) {
+  console.log('Поел ' + food);
+};
+
+eatDinner('стейк');
+// Выведет: Поел стейк
+</code></pre>
+<p>Что делать, если мы хотим зафиксировать в функции какое-то значение, а получить результат позже? 
+    Мы поступаем так с событиями: создаём функцию, используем внутри какие-то значения, но результат получаем не сразу,
+     а когда совершится какое-то событие. Правда, не всегда всё идёт гладко, прям как у нас в галерее. Но мы на пути решения проблемы.</p>
+<p>Вернёмся к примеру со школьником. Что, если школьник не хочет есть сельдерей?
+     И вообще не хочет зависеть от еды, которая сейчас есть в столовой? Конечно, ему нужно взять еду с собой из дома! 
+    Тогда у него всегда будет в рюкзаке контейнер с едой. Он сможет в любой момент его достать и перекусить. 
+    Как реализовать это в коде?</p>
+<pre><code>
+  var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  }
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+// В переменной функция eatDinner,
+// которую вернула функция collectContainer
+
+// Вызываем функцию eatDinner из переменной schoolkid
+schoolkid();
+// Выведет: Поел макароны
+</code></pre>
+        <div>
+        <ol>
+           <li>После определения функции collectContainer, создайте переменную schoolkid
+</li>
+           <li>Укажите, что переменная schoolkid равна вызову функции collectContainer</li>
+           <li>Ниже выведите переменную schoolkid в консоль.</li>
+           <li>Ниже вызовите полученную функцию: schoolkid()</li>
+        </ol>
+    </div>
+ <pre><code>
+var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+console.log(schoolkid);
+schoolkid();
+
+ </code></pre>
+<script>
+    var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+console.log(schoolkid);
+schoolkid();
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

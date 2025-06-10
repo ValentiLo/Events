@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дело раскрыто</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body class="pattern">
+    <h1>Дело раскрыто</h1>
+<p>Замыкания нам помогли, галерея почти работает!</p>
+<p>На каждой итерации мы передаём разные значения в addThumbnailClickHandler. 
+    Каждый обработчик получает своё замыкание, в котором находятся какие-то конкретные значения параметров thumbnail, photo. 
+    Именно эти значения использует каждый обработчик при наступлении события. 
+    И теперь значение индекса в уже отработавшем цикле никак не влияет на нашу программу.</p>
+<p>Осталось заменить выводы в консоль на замену src у большого изображения, и убедиться, что код работает правильно.</p>
+
+        <div>
+        <ol>
+           
+           <li>Замените код внутри обработчика на fullPhoto.src = photo;.
+</li>
+           <li>Кликните по одной из миниатюр.</li>
+        </ol>
+    </div>
+ <pre><code>
+var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+var addThumbnailClickHandler = function (thumbnail, photo) {
+  thumbnail.addEventListener('click', function () {
+    <span class="yellow">fullPhoto.src = photo;</span>
+  });
+};
+
+for (var i = 0; i < thumbnails.length; i++) {
+  addThumbnailClickHandler(thumbnails[i], photos[i]);
+}
+
+ </code></pre>
+ <section class="gallery">
+      <h1>Кексогалерея</h1>
+      <p class="gallery__photo-full">
+        <img class="full-photo" src="gallery/laptop-large.jpg" width="550" height="367" alt="Фото большое">
+      </p>
+      <p class="gallery__photo-previews">
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/laptop.jpg" alt="Превью с ноутбуком">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/microphone.jpg" alt="Превью с микрофоном">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/keyboard.jpg" alt="Превью с клавиатурой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/signboard.jpg" alt="Превью с табличкой">
+        </button>
+        <button class="gallery__photo-preview" type="button">
+          <img src="gallery/tree.jpg" alt="Превью с деревом">
+        </button>
+      </p>
+    </section>
+<script>
+   var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+var addThumbnailClickHandler = function (thumbnail, photo) {
+  thumbnail.addEventListener('click', function () {
+    fullPhoto.src = photo;
+  });
+};
+
+for (var i = 0; i < thumbnails.length; i++) {
+  addThumbnailClickHandler(thumbnails[i], photos[i]);
+}
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

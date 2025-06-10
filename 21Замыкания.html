@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body class="pattern">
+    <h1>Замыкания</h1>
+<p>Код действительно работает. В чём секрет такой странной записи и что она вообще означает?</p>
+<pre><code>var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  }
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+schoolkid();
+// Выведет: Поел макароны</code></pre>
+<p>Мы хотим, чтобы функция получила фиксированное значение, которое бы не зависело от изменений в глобальной области видимости. 
+    При этом результат работы функции мы хотим получить не сразу. Как с событиями, когда мы создаём обработчик, но ждём выполнение 
+    события не сразу. В нашем примере мы собираем школьнику контейнер с едой, 
+    чтобы он мог перекусить любимыми макаронами независимо от того, что дают в столовой.</p>
+<p>Код из примера работает так: мы вызываем collectContainer → функция collectContainer возвращает eatDinner → вызываем eatDinner.</p>
+<p>Мы создаём функцию внутри функции. Таким образом мы создаём одну область видимости внутри другой области видимости. 
+    У eatDinner своя область видимости, в которой идёт обращение к переменной food. 
+    Эта переменная объявлена внутри collectContainer, у которой своя область видимости.</p>
+<p>Функция eatDinner не находит внутри себя создание переменной food, смотрит в соседнюю область видимости 
+    (в область видимости collectContainer). 
+    Там она находит переменную food, узнаёт, что её значение равно строке 'макароны', и фиксирует это значение в памяти.</p>
+    <p>Постойте! Мы же выводили в консоль переменную schoolkid и там не было никаких макарон!</p>
+    <pre><code>
+        var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+<span class="yellow">console.log(schoolkid);</span>
+// Выведет: function () { console.log('Поел ' + <span class="yellow">food</span>); }
+    </code></pre>
+    <p>Всё верно. Код самой функции не меняется, просто в памяти вместе с функцией хранится то значение переменной,
+         которое было при объявлении этой функции. Поэтому eatDinner «помнит» значение food. Это особенность функций,
+          они помнят своё окружение в момент своего создания. В таком случае говорят о замыкании. Замыкание — функция, 
+          которая помнит о своём окружении. То есть это функция + все значения переменных вне локальной области видимости этой функции. 
+        Речь идёт только о переменных, которые функция использует в своём коде.</p>
+    <p>В нашем примере функция eatDinner вместе с переменной food являются замыканием.</p>
+    <p>Именно благодаря замыканиям код из примера выше работает. eatDinner помнит о значении food при своём создании, поэтому использует это значение в момент вызова. Как если бы мама сказала нам купить картошки, когда мы будем идти мимо магазина. Мы запомнили про картошку и пошли по своим делам. Когда мы увидели магазин, мы вспомнили, что именно картошка была нужна, мы её купили и пошли домой.
+
+</p>
+    <p>Убедимся, что замыкания позволяют школьнику есть макароны из контейнера независимо от еды в столовой.</p>
+ <pre><code>
+var food = 'салат';
+
+var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+ </code></pre>
+        <div>
+        <ol>
+           <li>Ниже, после создания переменной schoolkid вызовите функцию из этой переменной.
+
+</li>
+           <li>Ниже переопределите значение глобальной переменной food на 'бульон'</li>
+           <li>Затем снова вызовите функцию schoolkid</li>
+        </ol>
+    </div>
+<pre><code>
+var food = 'салат';
+
+var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+schoolkid();
+food = 'бульон';
+schoolkid();
+
+</code></pre>
+<p><img src="20.png" alt=""></p>
+<script>
+    var food = 'салат';
+
+var collectContainer = function () {
+  var food = 'макароны';
+  var eatDinner = function () {
+    console.log('Поел ' + food);
+  };
+  return eatDinner;
+};
+
+var schoolkid = collectContainer();
+schoolkid();
+food = 'бульон';
+schoolkid();
+
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>

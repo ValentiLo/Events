@@ -6,10 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
     <!-- <link href="style1.css" rel="stylesheet"> -->
-    <link rel="stylesheet" href="style12.css">
+    <link rel="stylesheet" href="style13.css">
     
 </head>
-<body>
+<body class="pattern">
     <h1>Добро пожаловать в нашу галерею</h1>
     <p>Галерея состоит из нескольких миниатюр (элементы с классом gallery__photo-preview) и большой фотографии (класс full-photo). По клику 
         на миниатюру должно меняться большое изображение. Большая картинка должна соответствовать превью, по которой кликнул пользователь.</p>
@@ -45,8 +45,39 @@
         </button>
       </p>
     </section>
+    <div>
+        <ol>
+            <li>После массива данных создайте переменную thumbnails, запишите в неё все элементы с классом gallery__photo-preview, найденные с помощью querySelectorAll
+</li>
+            <li>Ниже создайте переменную fullPhoto и запишите в неё изображение с классом full-photo, найденное с помощью querySelector</li>
+            
+        </ol>
+        <pre><code>
+var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
+        </code></pre>
+    </div>
 <script>
-  
+  var photos = [
+  'gallery/laptop-large.jpg',
+  'gallery/microphone-large.jpg',
+  'gallery/keyboard-large.jpg',
+  'gallery/signboard-large.jpg',
+  'gallery/tree-large.jpg'
+];
+
+var thumbnails = document.querySelectorAll('.gallery__photo-preview');
+var fullPhoto = document.querySelector('.full-photo');
+
 </script>
  <p><a href="index.html">На главную</a></p>   
 </body>

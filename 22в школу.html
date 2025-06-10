@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- <link href="style1.css" rel="stylesheet"> -->
+    <link rel="stylesheet" href="style13.css">
+    
+</head>
+<body class="pattern">
+    <h1>Собираемся в школу</h1>
+<p>Всё работает. На функцию никак не влияют глобальные переменные.</p>
+<p>Наш пример рабочий, но он жёстко привязан к значению внутри функции collectContainer. 
+    Может школьник не хочет есть каждый раз только макароны? Нужно дать ему возможность выбора. 
+    Да и чаще всего мы передаём какие-то значения в функцию,
+ а не жёстко фиксируем их внутри локальной области видимости. Добавим функции collectContainer параметр.</p>
+<pre><code>var collectContainer = function (<span class="yellow">food</span>) {
+  return function () {
+    console.log('Поел ' + <span class="yellow">food</span>);
+  };
+};
+
+var schoolkid = collectContainer(<span class="yellow">'макароны'</span>);
+schoolkid();
+// Выведет: Поел макароны</code></pre>
+<p>Теперь значение food будет использовано из параметра, а не из локальной переменной функции collectContainer. 
+    Работать всё будет точно так же. Функция, которую возвращает collectContainer, 
+    будет запоминать значение параметра и использовать его при своём вызове.</p>
+<p>Внутреннюю функцию мы сделали анонимной, потому что имя eatDinner нигде не используется. Это никак не повлияет на работу функции.</p>
+<p>Представим, что школьников теперь двое. Каждый из них возьмёт из дома контейнер с едой.
+
+</p>
+<p>Убедимся, что переопределение глобальных переменных не повлияет на работу нашей функции collectContainer.</p>
+<p>Обратите внимание, что каждый раз, когда мы будем вызывать функцию collectContainer и записывать результат в переменную, 
+    в памяти будет создаваться новое замыкание, которое будет помнить о значении параметра food в момент своего создания.</p>
+<pre><code>
+var food = 'салат';
+
+var collectContainer = function (food) {
+  return function () {
+    console.log('Поел ' + food);
+  };
+};
+
+var schoolkidFirst = collectContainer('макароны');
+</code></pre>
+        <div>
+        <ol>
+           <li>После переменной schoolkidFirst по аналогии создайте переменную schoolkidSecond. В качестве аргумента передайте строку 'пельмешки'</li>
+           <li>Ниже переопределите значение глобальной переменной food на 'сельдерей'</li>
+           <li>Затем вызовите функцию из переменной schoolkidFirst
+
+</li>
+           <li>Ниже вызовите функцию из переменной schoolkidSecond</li>
+           <li>А теперь сломайте наше замыкание, удалив параметр food у функции collectContainer. Накормите школьников сельдереем! Му-ха-ха!</li>
+        </ol>
+    </div>
+ <pre><code>
+var food = 'салат';
+
+var collectContainer = function (food) {
+  return function () {
+    console.log('Поел ' + food);
+  };
+};
+
+var schoolkidFirst = collectContainer('макароны');
+var schoolkidSecond = collectContainer('пельмешки');
+food = 'сельдерей';
+schoolkidFirst();
+schoolkidSecond();
+ </code></pre>
+ <p><img src="21.png" alt=""></p>
+ <h1>Cломайте замыкание, удалив параметр food у функции collectContainer</h1>
+  <pre><code>
+var food = 'салат';
+
+var collectContainer = function () {
+  return function () {
+    console.log('Поел ' + food);
+  };
+};
+
+var schoolkidFirst = collectContainer('макароны');
+var schoolkidSecond = collectContainer('пельмешки');
+food = 'сельдерей';
+schoolkidFirst();
+schoolkidSecond();
+ </code></pre>
+ <p><img src="211.png" alt=""></p>
+<script>
+    var food = 'салат';
+
+var collectContainer = function () {
+  return function () {
+    console.log('Поел ' + food);
+  };
+};
+
+var schoolkidFirst = collectContainer('макароны');
+var schoolkidSecond = collectContainer('пельмешки');
+food = 'сельдерей';
+schoolkidFirst();
+schoolkidSecond();
+</script>
+ <p><a href="index.html">На главную</a></p>   
+</body>
+</html>
